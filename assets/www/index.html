@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--<meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">-->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <script type="text/javascript" src="cordova.js"></script>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+    <body>
+        <!-- WELCOME SCREEN -->
+        <div data-role="page" id="welcome-screen">
+            <div data-role="main" class="ui-content">
+                <form id="choose-user">
+                    <h2>ARE YOU A:</h2>
+                    <a href="#login-screen" id="returning-user" class="ui-btn">RETURNING USER</a>
+                    <a href="#create-account-screen" id="new-user" class="ui-btn">NEW USER</a>
+                    <a href="#home-screen" id="guest" class="ui-btn">GUEST</a>
+                </form>
+            </div>
+        </div>
+        
+        <!-- RETURNING USER: LOGIN SCREEN -->
+        <div data-role="page" id="login-screen">
+            <div data-role="main" class="content">
+                <div id="title-login">
+                    <h1>LOGIN</h1>
+                </div>
+                <form id="login">
+                    
+                    <label for="username">USERNAME:</label>
+                    <input type="text" name="username" id="username" value="">
+                    <label for="passwd">PASSWORD:</label>
+                    <input type="password" name="passwd" id="passwd" value="">
+                    
+                    <div id="option-btns">
+                        <a href="#welcome-screen" id="cancel" class="ui-btn ui-btn-inline ui-corner-all">CANCEL</a>
+                        <a href="#home-screen" id="submit" class="ui-btn ui-btn-inline ui-corner-all">SUBMIT</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- NEW USER: CREATE ACCOUNT SCREEN -->
+        <div data-role="page" id="create-account-screen">
+            <div data-role="main" class="ui-content">
+                <form id="account-form">
+                    <div id="title-create">
+                        <h2>CREATE ACCOUNT</h2>
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="acct-name">NAME:</label>
+                        <input type="text" data-clear-btn="true" data-mini="true" name="acct-name" id="acct-name" placeholder="Enter name" value="">
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="acct-username">USERNAME:</label>
+                        <input type="text" data-clear-btn="true" data-mini="true" name="acct-username" id="acct-username" placeholder="Create a username" value="">
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="acct-password">PASSWORD:</label>
+                        <input type="text" data-clear-btn="true" data-mini="true" name="acct-password" id="acct-password" placeholder="Create a password" value="">
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="acct-email">EMAIL:</label>
+                        <input type="email" data-clear-btn="true" data-mini="true" name="acct-email" id="acct-email" placeholder="Enter email address" value="">
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="acct-usertype">USER TYPE:</label>
+                        <select name="acct-usertype" id="acct-usertype">
+                            <option value="-1">SELECT USER TYPE</option>
+                            <option value="0">Event Coordinator</option>
+                            <option value="1">Club President</option>
+                            <option value="2">Professor</option>
+                            <option value="3">Restaurant Owner</option>
+                        </select>
+                    </div>
+                    
+                    <div id="option-btns">
+                        <a href="#welcome-screen" id="cancel" class="ui-btn ui-btn-inline ui-corner-all">CANCEL</a>
+                        <a href="#home-screen" id="submit" class="ui-btn ui-btn-inline ui-corner-all">SUBMIT</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- HOME SCREEN -->
+        <div data-role="page" id="home-screen">
+            <div data-role="header" class="header">
+                
+            </div>
+            
+            <div data-role="main" id="map">
+            </div>
+            <script>
+            function initMap(){
+            var dis= {lat:33.753057, lng:-84.385498};
+            var map= new google.maps.Map(document.getElementById('map'),{
+            zoom:17,
+            center: dis
+            });
+            var marker= new google.maps.Marker({
+            position:dis,
+            map:map
+            });
+            }
+            </script>
+
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSxwNeQZ_ihl3Cp9LD59qMZ9mWG3foc9I&callback=initMap">
+            </script>
+
+            <div data-role="footer" class="footer">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" class="ui-btn-active">HOME</a></li>
+                        <li><a href="#events-screen">EVENTS</a></li>
+                        <li><a href="#favorites-screen">FAVORITES</a></li>
+                        <li><a href="#settings-screen">SETTINGS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CREATE EVENT SCREEN -->
+        <div data-role="page" id="create-event-screen">
+            <div data-role="main" class="ui-content"></div>
+        </div>
+        
+        <!-- EVENT SCREEN -->
+        <div data-role="page" id="events-screen">
+            <div data-role="header" class="header"></div>
+            <div data-role="main" class="ui-content"></div>
+            <div data-role="footer" class="nav-bar">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home-screen">HOME</a></li>
+                        <li><a href="#" class="ui-btn-active">EVENTS</a></li>
+                        <li><a href="#favorites-screen">FAVORITES</a></li>
+                        <li><a href="#settings-screen">SETTINGS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAVORITES SCREEN -->
+        <div data-role="page" id="favorites-screen">
+            <div data-role="header" class="header"></div>
+            <div data-role="main" class="ui-content"></div>
+            <div data-role="footer" class="nav-bar">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home-screen">HOME</a></li>
+                        <li><a href="#events-screen">EVENTS</a></li>
+                        <li><a href="#" class="ui-btn-active">FAVORITES</a></li>
+                        <li><a href="#settings-screen">SETTINGS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SETTINGS SCREEN -->
+        <div data-role="page" id="settings-screen">
+            <div data-role="header" class="header"></div>
+            <div data-role="main" class="ui-content"></div>
+            <div data-role="footer" class="nav-bar">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#home-screen">HOME</a></li>
+                        <li><a href="#events-screen">EVENTS</a></li>
+                        <li><a href="#favorites-screen">FAVORITES</a></li>
+                        <li><a href="#" class="ui-btn-active">SETTINGS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
